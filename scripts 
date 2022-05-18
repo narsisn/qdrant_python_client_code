@@ -1,5 +1,6 @@
 # set shekan dns at /etc/resolve.conf
 # install docker : https://docs.docker.com/engine/install/ubuntu/
+# install gdrant python client : pip install qdrant-client
 # pull the docker : docker pull qdrant/qdrant
 # running the docker :  mkdir qdrant/storage  and run sudo docker run -p 6333:6333 -v $(pwd)/storage:/qdrant/storage qdrant/qdrant
 
@@ -10,3 +11,6 @@
 4- https://qdrant.github.io/qdrant/redoc/index.html#tag/collections
 
 
+useful APIS:
+
+1- List the collections : curl -X GET 'http://localhost:6333/collections'
