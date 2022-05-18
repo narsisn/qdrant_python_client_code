@@ -3,6 +3,21 @@
 # install gdrant python client : pip install qdrant-client
 # pull the docker : docker pull qdrant/qdrant
 # running the docker :  mkdir qdrant/storage  and run sudo docker run -p 6333:6333 -v $(pwd)/storage:/qdrant/storage qdrant/qdrant
+# change qdrant_client/qdrant_client.py code at ~/.local/lib/python3.10/site-packages/qdrant_client/qdrant_client.py 
+-- function get_payload :
+change the  
+1) point_request=PointRequest(ids=ids, with_payload=True)
+to point_request=PointRequest(ids=ids, with_payload=True,with_vector=True)
+2)  for record in response.result:
+        result[record.id] = record.payload
+to 
+    for record in response.result:
+        result[record.id] = record.payload
+        result['vector'] = record.vector
+
+
+
+
 
 # useful urls : 
 1- https://qdrant.tech/documentation/quick_start/

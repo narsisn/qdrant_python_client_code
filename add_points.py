@@ -11,9 +11,8 @@ if __name__ == '__main__':
     host = "localhost" 
     port = 6333
     collection_name = "snapmode"
-    distance = "Cosine"   # Enum: "Cosine" "Euclid" "Dot"
-    vector_size = 2048
-    client = points.QpointClass(host,port,collection_name,distance,vector_size)
+ 
+    client = points.QpointClass(host,port,collection_name)
     conn = client.connect_collection()
 
     vectors = np.random.rand(1,2048)
