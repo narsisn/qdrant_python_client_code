@@ -1,0 +1,12 @@
+# set shekan dns at /etc/resolve.conf
+# install docker : https://docs.docker.com/engine/install/ubuntu/
+# pull the docker : docker pull qdrant/qdrant
+# running the docker :  mkdir qdrant/storage  and run sudo docker run -p 6333:6333 -v $(pwd)/storage:/qdrant/storage qdrant/qdrant
+
+# useful urls : 
+1- https://qdrant.tech/documentation/quick_start/
+2- https://github.com/qdrant/qdrant_client
+3- https://github.com/qdrant/qdrant
+4- https://qdrant.github.io/qdrant/redoc/index.html#tag/collections
+
+
