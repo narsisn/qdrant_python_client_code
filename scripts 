@@ -14,3 +14,4 @@
 useful APIS:
 
 1- List the collections : curl -X GET 'http://localhost:6333/collections'
+2- Delete the collections : curl -X DELETE 'http://localhost:6333/collections/collection_name'
