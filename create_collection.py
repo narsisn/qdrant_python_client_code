@@ -15,7 +15,9 @@ class CreateCollection:
             distance=self.distance,
             vector_size=self.vector_size
                 )
-        return 0 
+        my_collection_info = client.http.collections_api.get_collection(self.collection_name)
+
+        return my_collection_info
 
 
 if __name__ == "__main__":
@@ -26,5 +28,8 @@ if __name__ == "__main__":
     distance = "Cosine"   # Enum: "Cosine" "Euclid" "Dot"
     vector_size = 2048
     CC = CreateCollection(host,port,collection_name,distance,vector_size)
-    CC.create_collection()
+    my_collection_info = CC.create_collection()
     print(f'creating the collection {collection_name} successfully done.')
+    print(f'The Info is {my_collection_info}')
+
+
