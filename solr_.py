@@ -18,7 +18,7 @@ TEMP_IMG_DIR = 'temp_img/'
 
 def solr_connection():
 
-    solr_url = "http://192.168.104.100:8983/solr/Product_Core/"
+    solr_url = "http://localhost:8983/solr/Product_Core/"
     solr_conn = pysolr.Solr(solr_url, timeout=10, always_commit=True)
     
     return solr_conn
