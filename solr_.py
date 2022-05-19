@@ -18,7 +18,7 @@ TEMP_IMG_DIR = 'temp_img/'
 
 def solr_connection():
 
-    solr_url = "http://localhost:8983/solr/Product_Core/"
+    solr_url = "http://192.168.104.100:8983/solr/Product_Core/"
     solr_conn = pysolr.Solr(solr_url, timeout=10, always_commit=True)
     
     return solr_conn
@@ -99,17 +99,22 @@ if __name__ == '__main__':
         print(f'**** The start is :{start} ****')
         result = solr_conn.search("business_type:E-commerce", start=start, rows=rows)
         for res in result:
-            # get product specs
-            ids,payloads,image_url = get_spec(res)
-            # download the  image
-            image_path = image_download(image_url,session)
-            # embedd the image 
-            res = requests.post(model, files={'data': open(image_path, 'rb')}).text
-            remove_image(image_path)
-            res = json.loads(res)
-            vectors = np.array(res).reshape(1,1024)
-            # index at qdrant       
-            client.add_point(qdrant_conn,vectors,payloads,ids,batch_size,parallel)
+            try:
+                # get product specs
+                ids,payloads,image_url = get_spec(res)
+                print(image_url)
+                # download the  image
+                image_path = image_download(image_url,session)
+                # embedd the image 
+                res = requests.post(model, files={'data': open(image_path, 'rb')}).text
+                remove_image(image_path)
+                res = json.loads(res)
+                vectors = np.array(res).reshape(1,1024)
+                # index at qdrant       
+                client.add_point(qdrant_conn,vectors,payloads,ids,batch_size,parallel)
+            except:
+                print(f'Error on image : {image_url}')
+                continue
         
         start = start + rows
         if len(result) == 0 :
