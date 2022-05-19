@@ -15,7 +15,7 @@ if __name__ == '__main__':
     client = points.QpointClass(host,port,collection_name)
     conn = client.connect_collection()
 
-    vectors = np.random.rand(1,2048)
+    vectors = np.random.rand(1,1024)
     ids = ['acebc9930156548c8645d58e0c127cce']
     batch_size = 1
     parallel = 1 

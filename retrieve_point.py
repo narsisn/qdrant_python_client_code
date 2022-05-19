@@ -16,7 +16,7 @@ if __name__ == '__main__':
     client = points.QpointClass(host,port,collection_name)
     conn = client.connect_collection()
 
-    ids = ['acebc9930156548c8645d58e0c127cce']
+    ids = ['b75b011b772f58dd9636cba08b80f4e1']
 
     results = client.retrieve_vector(conn,ids)
 

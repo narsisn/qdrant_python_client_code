@@ -16,7 +16,6 @@ class QpointClass:
     
     def add_point(self,conn,vectors,payloads,ids,batch_size,parallel):
         conn.upload_collection(self.collection_name, vectors , payloads ,ids, batch_size, parallel)
-
         return 
     
     def retrieve_vector(self,conn,ids):
@@ -24,8 +23,8 @@ class QpointClass:
 
         return result
 
-    def serach_point(self,conn,qvec):
-        result = conn.search(self.collection_name,qvec)
+    def serach_point(self,conn,qvec,top):
+        result = conn.search(self.collection_name,qvec,top=top)
         return result
     
 

@@ -26,7 +26,7 @@ if __name__ == "__main__":
     port = 6333
     collection_name = "snapmode"
     distance = "Cosine"   # Enum: "Cosine" "Euclid" "Dot"
-    vector_size = 2048
+    vector_size = 1024
     CC = CreateCollection(host,port,collection_name,distance,vector_size)
     my_collection_info = CC.create_collection()
     print(f'creating the collection {collection_name} successfully done.')
