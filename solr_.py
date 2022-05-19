@@ -93,7 +93,8 @@ if __name__ == '__main__':
 
     # solr connection 
     solr_conn = solr_connection()
-
+    
+    counter = 0
 
     while(1):
         print(f'**** The start is :{start} ****')
@@ -101,6 +102,7 @@ if __name__ == '__main__':
         for res in result:
             try:
                 # get product specs
+                print("the counter is :", counter)
                 ids,payloads,image_url = get_spec(res)
                 print(image_url)
                 # download the  image
@@ -115,6 +117,7 @@ if __name__ == '__main__':
             except:
                 print(f'Error on image : {image_url}')
                 continue
+            counter+=1
         
         start = start + rows
         if len(result) == 0 :
