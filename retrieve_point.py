@@ -8,7 +8,7 @@ import points
 
 if __name__ == '__main__':
 
-    host = "localhost" 
+    host = "192.168.4.196" 
     port = 6333
     collection_name = "snapmode"
 
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     client = points.QpointClass(host,port,collection_name)
     conn = client.connect_collection()
 
-    ids = ['217a143d74625ac7af9cbb0a2e150ea8']
+    ids = ['b75b011b772f58dd9636cba08b80f4e1']
 
     results = client.retrieve_vector(conn,ids)
 

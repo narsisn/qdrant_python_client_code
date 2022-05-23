@@ -8,15 +8,16 @@ import points
 
 if __name__ == '__main__':
 
-    host = "localhost" 
+    host = "192.168.4.196" 
     port = 6333
-    collection_name = "snapmode"
+    collection_name = "toobamode"
  
     client = points.QpointClass(host,port,collection_name)
     conn = client.connect_collection()
 
     vectors = np.random.rand(1,1024)
-    ids = ['acebc9930156548c8645d58e0c127cce']
+    print(vectors)
+    ids = ['5ac33bab0ba654f9806764f0ba8e5bb1']
     batch_size = 1
     parallel = 1 
     payloads = [{ "product_id" : "b75b011b772f58dd9636cba08b80f4e1" ,

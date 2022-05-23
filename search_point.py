@@ -8,7 +8,7 @@ import points
 
 if __name__ == '__main__':
 
-    host = "localhost" 
+    host = "192.168.4.196" 
     port = 6333
     collection_name = "snapmode"
     top = 50
@@ -18,7 +18,6 @@ if __name__ == '__main__':
     conn = client.connect_collection()
 
     query_vectors = np.random.rand(1024)
-
     results = client.serach_point(conn,query_vectors,top)
 
     print(f'The results is {results}')

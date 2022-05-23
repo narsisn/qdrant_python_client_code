@@ -22,11 +22,11 @@ class CreateCollection:
 
 if __name__ == "__main__":
 
-    host = "localhost" 
+    host = "192.168.4.196" 
     port = 6333
-    collection_name = "snapmode"
+    collection_name = "test"
     distance = "Cosine"   # Enum: "Cosine" "Euclid" "Dot"
-    vector_size = 1024
+    vector_size = 4
     CC = CreateCollection(host,port,collection_name,distance,vector_size)
     my_collection_info = CC.create_collection()
     print(f'creating the collection {collection_name} successfully done.')
