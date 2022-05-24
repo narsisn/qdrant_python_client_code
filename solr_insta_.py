@@ -19,13 +19,13 @@ TEMP_IMG_DIR = 'temp_img/'
 
 def solr_connection():
 
-    solr_url = "http://192.168.104.100:8983/solr/Product_Core/"
+    solr_url = "http://0.0.0.0:8983/solr/Product_Core/"
     solr_conn = pysolr.Solr(solr_url, timeout=10, always_commit=True)
     
     return solr_conn
 
 def qdrant_connection():
-    host = "192.168.4.196" 
+    host = "0.0.0.0" 
     port = 6333
     collection_name = "snapmode"
     client = points.QpointClass(host,port,collection_name)
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     # model address
     model_name = 'ViT'
-    toechserve_host = '192.168.4.196'
+    toechserve_host = '0.0.0.0'
     toechserve_port = '8080'
     model = "http://"+ toechserve_host + ":" + toechserve_port + "/predictions/" + model_name
 
