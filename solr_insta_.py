@@ -19,13 +19,13 @@ TEMP_IMG_DIR = 'temp_img/'
 
 def solr_connection():
 
-    solr_url = "http://0.0.0.0:8983/solr/Product_Core/"
+    solr_url = "http://192.168.104.100:8983/solr/Product_Core/"
     solr_conn = pysolr.Solr(solr_url, timeout=10, always_commit=True)
     
     return solr_conn
 
 def qdrant_connection():
-    host = "0.0.0.0" 
+    host = "192.168.4.196" 
     port = 6333
     collection_name = "snapmode"
     client = points.QpointClass(host,port,collection_name)
@@ -60,11 +60,7 @@ def get_spec(res):
         "main_category" : res['main_category'][0],
         "gender" : res['gender'][0]
     }]
-    product_id = res['product_id'][0]
-    
     image_url = res['url']
-    print(image_url)
-
     ids =  [uuid.uuid5(uuid.NAMESPACE_URL, res['url'] ).hex ]
 
     return ids,payloads,image_url
@@ -84,7 +80,7 @@ if __name__ == '__main__':
 
     # model address
     model_name = 'ViT'
-    toechserve_host = '0.0.0.0'
+    toechserve_host = '192.168.4.196'
     toechserve_port = '8080'
     model = "http://"+ toechserve_host + ":" + toechserve_port + "/predictions/" + model_name
 
@@ -116,12 +112,11 @@ if __name__ == '__main__':
                 res = json.loads(res)
                 vectors = np.array(res).reshape(1,1024)
                 # index at qdrant
-                print(ids)       
+                print(ids)      
                 client.add_point(qdrant_conn,vectors,payloads,ids,batch_size,parallel)
             except:
                 print(f'Error on image : {image_url}')
                 continue
-          
             counter+=1
         
         start = start + rows
